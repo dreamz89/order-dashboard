@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import SuppliersRank from '../suppliers-rank/SuppliersRank'
 
 function App() {
@@ -15,10 +16,24 @@ function App() {
   , [])
 
   return (
-    <div className="App">
-      <SuppliersRank data={data} />
-    </div>
-  );
+    <Container className="App">
+      <Element>
+        <SuppliersRank data={data} />
+      </Element>
+      
+    </Container>
+  )
 }
 
-export default App;
+export default App
+
+const Container = styled.div`
+  background-color: #f5f5f5;
+`
+
+const Element = styled.div`
+  background-color: #fff;
+  display: inline-block;
+  margin: 16px;
+  padding: 16px;
+`
