@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Top 3 Purchased Products
 - [ ] Format data
-- [ ] Toggle between price € or quantity
+- [ ] Toggle between purchase volume € or quantity
 - [ ] Show data
 - [ ] Update data
 
@@ -24,9 +24,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [ ] Update barchart
 
 ### Incoming Deliveries
-- [ ] Format data
-- [ ] Make calendar dropdown
-- [ ] List deliveries by day, grouped by supplier
+- [x] Format data
+- [x] List deliveries by day, grouped by supplier
+- [x] Styling
 
 ### Misc
 - [x] Fetch data from JSON
