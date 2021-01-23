@@ -1,6 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
+
 import SuppliersRank from '../suppliers-rank/SuppliersRank'
+import DeliveriesList from '../deliveries-list/DeliveriesList'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h2, h4, h5 {
+    margin-top: 0;
+  }
+
+  h5, p {
+    font-size: 14px;
+    text-align: left;
+  }
+`
 
 function App() {
   const [data, setData] = useState([])
@@ -17,8 +35,12 @@ function App() {
 
   return (
     <Container className="App">
+      <GlobalStyle />
       <Element>
         <SuppliersRank data={data} />
+      </Element>
+      <Element>
+        <DeliveriesList data={data} />
       </Element>
       
     </Container>
@@ -33,7 +55,8 @@ const Container = styled.div`
 
 const Element = styled.div`
   background-color: #fff;
+  border-radius: 8px;
   display: inline-block;
   margin: 16px;
-  padding: 16px;
+  padding: 20px;
 `
