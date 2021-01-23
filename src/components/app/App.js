@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 
+import TopProducts from '../top-products/TopProducts'
 import SuppliersRank from '../suppliers-rank/SuppliersRank'
 import DeliveriesList from '../deliveries-list/DeliveriesList'
 
@@ -36,6 +37,9 @@ function App() {
   return (
     <Container className="App">
       <GlobalStyle />
+      <Element>
+        <TopProducts data={data} />
+      </Element>
       <Element>
         <SuppliersRank data={data} />
       </Element>
