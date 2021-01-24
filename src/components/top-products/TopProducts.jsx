@@ -38,15 +38,17 @@ function TopProducts({ data }) {
 
   useEffect(() => {
     if (data && d3Container.current) {
-      // Create chart area with margins
-      const margin = { left: 20, right: 20, top: 30, bottom: 30 }
-      const width = 400 - margin.left - margin.right,
+      // Define spaces
+      const margin = { left: 50, right: 50, top: 50, bottom: 50 }
+      const width = 560 - margin.left - margin.right,
           height = 200 - margin.top - margin.bottom
       
-      const chart = d3.select(d3Container.current)
+      const svg = d3.select(d3Container.current)
           .attr('height', height + margin.top + margin.bottom)
           .attr('width', width + margin.left + margin.right)
-        .append('g')
+      
+      // Allow space for axis
+      const chart = svg.select('.chart')
           .attr('transform', 'translate(' + margin.left
             + ', ' + margin.top + ')')
 
@@ -58,7 +60,7 @@ function TopProducts({ data }) {
         .paddingOuter(0.3)
 
       const xAxis = d3.axisBottom(x)
-      chart.append('g')
+      chart.select('.x-axis')
         .call(xAxis)
         .attr('transform', `translate(0, ${height})`)
         .attr('font-family', 'Montserrat')
@@ -81,7 +83,7 @@ function TopProducts({ data }) {
 
       // Add labels into chart
       chart
-        .append("g")
+        .select(".labels")
         .attr("text-anchor", "middle")
         .attr("font-size", 12)
         .selectAll('text')
@@ -92,6 +94,7 @@ function TopProducts({ data }) {
           .attr('y', d => y(d[active]) - 5)
     }
   }, [active, data, d3Container.current]) // eslint-disable-line
+
   return (
     <div>
       <h2>Top 3 Purchased Products</h2>
@@ -100,7 +103,12 @@ function TopProducts({ data }) {
         active={active} 
         handleActive={setActive} 
       />
-      <svg ref={d3Container} />
+      <svg ref={d3Container}>
+        <g className="chart">
+          <g className="x-axis" />
+          <g className="labels" />
+        </g>
+      </svg>
     </div>
   )
 }

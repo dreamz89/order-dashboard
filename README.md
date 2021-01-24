@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [x] Format data
 - [x] Toggle between purchase volume € or quantity
 - [x] Show data
-- [ ] Update data
+- [x] Update data
 
 ### Order Volume
 - [x] Format data
