@@ -11,11 +11,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [ ] Update data
 
 ### Order Volume
-- [ ] Format data
+- [x] Format data
 - [ ] Make category multi-level dropdown
 - [ ] Make supplier dropdown
 - [ ] Show line graph
 - [ ] Update line graph
+- [ ] Add tooltip
 
 ### Suppliers Ranking
 - [x] Format data
@@ -32,6 +33,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [x] Fetch data from JSON
 - [ ] Let the user change the arrangement of the four elements by swapping one for another
 - [ ] Testing
-- [ ] Styling
 - [ ] Deployment
 

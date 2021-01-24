@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 
 import TopProducts from '../top-products/TopProducts'
+import OrderVolume from '../order-volume/OrderVolume'
 import SuppliersRank from '../suppliers-rank/SuppliersRank'
 import DeliveriesList from '../deliveries-list/DeliveriesList'
 
@@ -41,12 +42,14 @@ function App() {
         <TopProducts data={data} />
       </Element>
       <Element>
+        <OrderVolume data={data} />
+      </Element>
+      <Element>
         <SuppliersRank data={data} />
       </Element>
       <Element>
         <DeliveriesList data={data} />
       </Element>
-      
     </Container>
   )
 }
