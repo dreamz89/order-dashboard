@@ -22,7 +22,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [x] Format data
 - [x] Toggle between purchase volume € or quantity
 - [x] Show barchart
-- [ ] Update barchart
+- [x] Update barchart
 
 ### Incoming Deliveries
 - [x] Format data

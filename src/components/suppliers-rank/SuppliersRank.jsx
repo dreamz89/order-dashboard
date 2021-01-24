@@ -38,17 +38,17 @@ function SuppliersRank({ data }) {
 
   useEffect(() => {
     if (data && d3Container.current) {
-      // const time = d3.transition().duration(750)
-
-      // Create chart area with margins
+      // Define spaces
       const margin = { left: 120, right: 20, top: 50, bottom: 20 }
       const width = 560 - margin.left - margin.right,
           height = 200 - margin.top - margin.bottom
       
-      const chart = d3.select(d3Container.current)
+      const svg = d3.select(d3Container.current)
           .attr('height', height + margin.top + margin.bottom)
           .attr('width', width + margin.left + margin.right)
-        .append('g')
+      
+      // Allow space for axis
+      const chart = svg.select('.chart')
           .attr('transform', 'translate(' + margin.left
             + ', ' + margin.top + ')')
   
@@ -58,7 +58,7 @@ function SuppliersRank({ data }) {
         .range([0, width])
 
       const xAxis = d3.axisTop(x)
-      chart.append('g')
+      chart.select('.x-axis')
         .call(xAxis)
         .attr('font-family', 'Montserrat')
         .attr('font-size', 14)
@@ -70,7 +70,7 @@ function SuppliersRank({ data }) {
         .paddingOuter(0.3)
 
       const yAxis = d3.axisLeft(y).tickFormat(i => sortedData[i].supplier)
-      chart.append('g')
+      chart.select('.y-axis')
           .call(yAxis)
           .attr('font-family', 'Montserrat')
           .attr('font-size', 14)
@@ -97,7 +97,12 @@ function SuppliersRank({ data }) {
         active={active} 
         handleActive={setActive} 
       />
-      <svg ref={d3Container} />
+      <svg ref={d3Container}>
+        <g className="chart">
+          <g className="x-axis" />
+          <g className="y-axis" />
+        </g>
+      </svg>
     </div>
   )
 }
