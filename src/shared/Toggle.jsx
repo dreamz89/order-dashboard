@@ -33,7 +33,7 @@ const Inner = styled.div`
   background-color: ${ props => props.active === props.choice && '#D6F5FF'};
   color: ${ props => props.active === props.choice ? '#304ffe' : '#666'};
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   padding: 6px 12px;
 

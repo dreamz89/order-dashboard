@@ -5,9 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Progress checklist
 
 ### Top 3 Purchased Products
-- [ ] Format data
-- [ ] Toggle between purchase volume € or quantity
-- [ ] Show data
+- [x] Format data
+- [x] Toggle between purchase volume € or quantity
+- [x] Show data
 - [ ] Update data
 
 ### Order Volume

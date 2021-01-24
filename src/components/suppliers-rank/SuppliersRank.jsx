@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
 import * as d3 from 'd3'
+
 import Toggle from '../../shared/Toggle'
 
 const choices = [
@@ -18,31 +18,31 @@ function SuppliersRank({ data }) {
 
   const d3Container = useRef(null)
 
+  // Prepare data
+  const groupedSuppliers = data.reduce((acc, current) => {
+    const index = acc.findIndex((obj) => obj.supplier === current.supplier) 
+    if (index !== -1) {
+      acc[index].quantity += +current.quantity
+      acc[index].volume += +current.price * +current.quantity
+    } else {
+      acc.push({
+        supplier: current.supplier,
+        quantity: +current.quantity,
+        volume: +current.price * +current.quantity
+      })
+    }
+    return acc
+  }, [])
+
+  const sortedData = groupedSuppliers.sort((a, b) => a[active] - b[active])
+
   useEffect(() => {
     if (data && d3Container.current) {
       // const time = d3.transition().duration(750)
 
-      // Prepare data
-      const groupedSuppliers = data.reduce((acc, current) => {
-        const index = acc.findIndex((obj) => obj.supplier === current.supplier) 
-        if (index !== -1) {
-          acc[index].quantity += +current.quantity
-          acc[index].volume += +current.price * +current.quantity
-        } else {
-          acc.push({
-            supplier: current.supplier,
-            quantity: +current.quantity,
-            volume: +current.price * +current.quantity
-          })
-        }
-        return acc
-      }, [])
-
-      const sortedData = groupedSuppliers.sort((a, b) => a[active] - b[active])
-
       // Create chart area with margins
       const margin = { left: 120, right: 20, top: 50, bottom: 20 }
-      const width = 500 - margin.left - margin.right,
+      const width = 560 - margin.left - margin.right,
           height = 200 - margin.top - margin.bottom
       
       const chart = d3.select(d3Container.current)
@@ -61,7 +61,7 @@ function SuppliersRank({ data }) {
       chart.append('g')
         .call(xAxis)
         .attr('font-family', 'Montserrat')
-        .attr('font-size', 12)
+        .attr('font-size', 14)
 
       const y = d3.scaleBand()
         .domain(d3.range(sortedData.length))
@@ -73,7 +73,7 @@ function SuppliersRank({ data }) {
       chart.append('g')
           .call(yAxis)
           .attr('font-family', 'Montserrat')
-          .attr('font-size', 12)
+          .attr('font-size', 14)
   
       // Add bars into chart
       chart
@@ -91,7 +91,7 @@ function SuppliersRank({ data }) {
 
   return (
     <div>
-      <Header>Suppliers Ranking</Header>
+      <h2>Suppliers Ranking</h2>
       <Toggle 
         choices={choices} 
         active={active} 
@@ -103,10 +103,3 @@ function SuppliersRank({ data }) {
 }
 
 export default SuppliersRank
-
-const Header = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  margin-top: 0;
-`
