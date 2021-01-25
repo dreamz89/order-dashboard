@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [x] Format data
 - [ ] Make category multi-level dropdown
 - [ ] Make supplier dropdown
-- [ ] Show line graph
+- [x] Show line graph
 - [ ] Update line graph
 - [ ] Add tooltip
 
@@ -31,6 +31,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Misc
 - [x] Fetch data from JSON
+- [ ] Animate charts smoothly
 - [ ] Let the user change the arrangement of the four elements by swapping one for another
 - [ ] Testing
 - [ ] Deployment

@@ -53,7 +53,7 @@ function TopProducts({ data }) {
 
     // Create x axis and y
     const x = d3.scaleBand()
-      .domain(top3Products.map(d => d['productName']))
+      .domain(top3Products.map(d => d.productName))
       .range([0, width])
       .paddingInner(0.2)
       .paddingOuter(0.3)
@@ -74,7 +74,7 @@ function TopProducts({ data }) {
       .selectAll('rect')
       .data(top3Products)
       .join('rect')
-        .attr('x', d => x(d['productName']))
+        .attr('x', d => x(d.productName))
         .attr('y', d => y(d[active]))
         .attr('width', x.bandwidth())
         .attr('height', d => y(0) - y(d[active]))
@@ -89,7 +89,7 @@ function TopProducts({ data }) {
       .data(top3Products)
       .join('text')
         .text(d => d[active].toFixed(0))
-        .attr('x', d => x(d['productName']) + x.bandwidth() / 2)
+        .attr('x', d => x(d.productName) + x.bandwidth() / 2)
         .attr('y', d => y(d[active]) - 5)
   }, [active, data])
 

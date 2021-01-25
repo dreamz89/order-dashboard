@@ -84,7 +84,7 @@ function SuppliersRank({ data }) {
         .attr('width', d => x(d[active]) - x(0))
         .attr('height', y.bandwidth())
         .attr('fill', '#304ffe')
-  }, [active, data])
+  }, [active, sortedData])
 
   return (
     <div>
