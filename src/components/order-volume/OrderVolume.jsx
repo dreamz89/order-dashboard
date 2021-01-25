@@ -1,11 +1,75 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as d3 from 'd3'
 
+import Dropdown from '../../shared/Dropdown'
+
 function OrderVolume({ data }) {
   const [productCategory1, setProductCategory1] = useState(null)
   const [productCategory2, setProductCategory2] = useState(null)
   const [supplier, setSupplier] = useState(null)
 
+  // To populate supplier dropdown
+  const supplierOptions = [{ value: 'All', label: '-- All Suppliers --'}]
+  const supplierList = []
+  data.forEach(order => {
+    if (!supplierList.includes(order.supplier)) supplierList.push(order.supplier)
+  })
+  supplierList.forEach(supplier => supplierOptions.push({
+    value: supplier,
+    label: supplier
+  }))
+
+  const handleSelectSupplier = (item) => {
+    if (item.value === 'All') {
+      setSupplier(null)
+    } else {
+      setSupplier(item.value)
+    }
+  }
+
+  // To populate category dropdown
+  const mainCategoryOptions = [{ value: 'All', label: '-- All Main Categories --'}]
+  const mainCategoryList = []
+  data.forEach(order => {
+    if (!mainCategoryList.includes(order.productCategory1)) mainCategoryList.push(order.productCategory1)
+  })
+  mainCategoryList.forEach(mainCategory => mainCategoryOptions.push({
+    value: mainCategory,
+    label: mainCategory
+  }))
+
+  const handleSelectMainCategory = (item) => {
+    if (item.value === 'All') {
+      setProductCategory1(null)
+    } else {
+      setProductCategory1(item.value)
+    }
+  }
+
+  const subCategoryOptions = [{ value: 'All', label: '-- All Sub Categories --'}]
+  const subCategoryList = []
+  if (productCategory1 !== null) {
+    const subCategoryGroup = data.filter(order => {
+      return order.productCategory1 === productCategory1
+    })
+    subCategoryGroup.forEach(order => {
+      if (!subCategoryList.includes(order.productCategory2)) subCategoryList.push(order.productCategory2)
+    })
+    subCategoryList.forEach(subCategory => subCategoryOptions.push({
+      value: subCategory,
+      label: subCategory
+    }))
+  }
+
+  const handleSelectSubCategory = (item) => {
+    if (item.value === 'All') {
+      setProductCategory2(null)
+    } else {
+      setProductCategory2(item.value)
+    }
+  }
+ 
+  // Filter and sort data
   const filters = {
     'productCategory1': productCategory1,
     'productCategory2': productCategory2,
@@ -92,6 +156,19 @@ function OrderVolume({ data }) {
   return (
     <div>
       <h2>Total Order Volume</h2>
+      <Dropdown
+        options={supplierOptions} 
+        handleSelect={handleSelectSupplier} 
+      />
+      <Dropdown
+        options={mainCategoryOptions} 
+        handleSelect={handleSelectMainCategory} 
+      />
+      <Dropdown
+        disabled={productCategory1 === null}
+        options={subCategoryOptions} 
+        handleSelect={handleSelectSubCategory} 
+      />
       <svg ref={d3Container}>
         <g className="chart">
           <g className="x-axis" />
