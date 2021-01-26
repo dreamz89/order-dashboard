@@ -38,15 +38,17 @@ function App() {
   return (
     <Container className="App">
       <GlobalStyle />
-      <Element>
-        <TopProducts data={data} />
-      </Element>
-      <Element>
-        <OrderVolume data={data} />
-      </Element>
-      <Element>
-        <SuppliersRank data={data} />
-      </Element>
+      <LeftContainer>
+        <Element>
+          <TopProducts data={data} />
+        </Element>
+        <Element>
+          <OrderVolume data={data} />
+        </Element>
+        <Element>
+          <SuppliersRank data={data} />
+        </Element>
+      </LeftContainer>
       <Element>
         <DeliveriesList data={data} />
       </Element>
@@ -58,6 +60,12 @@ export default App
 
 const Container = styled.div`
   background-color: #f5f5f5;
+  display: flex;
+`
+
+const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
 const Element = styled.div`
@@ -66,4 +74,5 @@ const Element = styled.div`
   display: inline-block;
   margin: 16px;
   padding: 20px;
+  width: 600px;
 `

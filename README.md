@@ -12,10 +12,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Order Volume
 - [x] Format data
-- [ ] Make category multi-level dropdown
-- [ ] Make supplier dropdown
+- [x] Make dynamic dropdowns
 - [x] Show line graph
-- [ ] Update line graph
+- [x] Update line graph
 - [ ] Add tooltip
 
 ### Suppliers Ranking
@@ -34,5 +33,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [ ] Animate charts smoothly
 - [ ] Let the user change the arrangement of the four elements by swapping one for another
 - [ ] Testing
-- [ ] Deployment
+- [x] Deployment
 
