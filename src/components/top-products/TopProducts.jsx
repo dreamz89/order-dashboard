@@ -91,7 +91,7 @@ function TopProducts({ data }) {
         .text(d => d[active].toFixed(0))
         .attr('x', d => x(d.productName) + x.bandwidth() / 2)
         .attr('y', d => y(d[active]) - 5)
-  }, [active, data])
+  }, [active, top3Products])
 
   return (
     <div>
